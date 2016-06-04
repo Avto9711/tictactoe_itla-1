@@ -1,24 +1,16 @@
 /*
  * TicTacToe.h
  *
- *  Created on: May 22, 2016
- *      Author: raydelto
+ *  Created on: May 28, 2016
+ *      Author: Angel
  */
-
 #ifndef TICTACTOE_H_
 #define TICTACTOE_H_
 #include <iostream>
 
-void init();
-bool validate();
-void clearScreen();
-void showBoard();
-bool isValidInput(std::istream&);
-bool isAvailable(int , int );
-bool gameOver(); //implement this method
-
-
-
-
+void Draw();
+void Input();
+char Win();
+void TogglePlayer();
 
 #endif /* TICTACTOE_H_ */

@@ -1,116 +1,207 @@
+// my first program in C++
 #include "TicTacToe.h"
+#include <iostream>
 #include <cstdlib>
+
 using namespace std;
 
-char board[3][3]; //Possible values are X, O and _ (for blank positions)
+char matrix [3][3] = {'1','2','3','4','5','6','7','8','9'};
 char player = 'X';
+int n;
 
-bool isAvailable(int row, int column)
-{
-	//TODO: Implement this code so that it tells the user whether or not he can play in the selected cell
-	return true;
+void Draw(){
+  system ("cls");
+  cout << "Tic Tac Toe Version 0.7"<< endl;
+  for (int i = 0; i < 3; i++)
+  {
+    for (int j = 0; j < 3; j++)
+    {
+      cout <<" "<< matrix[i][j]<< " ";
+    }
+    cout << endl;
+  }
+}
+void Input(){
+
+  int number;
+    cout<< "it's "<< player << " turn. " << "Press the number where you want to play:";
+    cin >> number;
+
+
+    switch (number) {
+
+      case 1 :
+
+      if(matrix[0][0] == 'X' || matrix[0][0] == 'O'){
+            cout<<"You cannot use this position it's already in use by "<< matrix[0][0] << endl;
+      Input();
+      break;
+      }else if(matrix[0][0] == '1'){
+        //input();
+        matrix[0][0] = player;
+        break;
+      }
+
+      case 2 :
+
+      if(matrix[0][1] == 'X' || matrix[0][1] == 'O'){
+            cout<<"You cannot use this position it's already in use by "<< matrix[0][1] << endl;
+      Input();
+      break;
+    }else if(matrix[0][1] == '2'){
+        //input();
+        matrix[0][1] = player;
+        break;
+      }
+
+
+      case  3 :
+
+        if(matrix[0][2] == 'X' || matrix[0][2] == 'O'){
+              cout<<"You cannot use this position it's already in use by "<<matrix[0][2] << endl;
+        Input();
+        break;
+      }else if(matrix[0][2] == '3'){
+          //input();
+          matrix[0][2] = player;
+          break;
+        }
+
+      case 4 :
+
+      if(matrix[1][0] == 'X' || matrix[1][0] == 'O'){
+            cout<<"You cannot use this position it's already in use by "<< matrix[1][0] << endl;
+      Input();
+      break;
+    }else if(matrix[1][0] == '4'){
+        //input();
+        matrix[1][0] = player;
+        break;
+      }
+
+      case 5 :
+
+      if(matrix[1][1] == 'X' || matrix[1][1] == 'O'){
+            cout<<"You cannot use this position it's already in use by "<< matrix[1][1] << endl;
+      Input();
+      break;
+    }else if(matrix[1][1] == '5'){
+        //input();
+        matrix[1][1] = player;
+        break;
+      }
+
+      case 6 :
+
+      if(matrix[1][2] == 'X' || matrix[1][2] == 'O'){
+            cout<<"You cannot use this position it's already in use by "<< matrix[1][2] << endl;
+      Input();
+      break;
+    }else if(matrix[1][2] == '6'){
+        //input();
+        matrix[1][2] = player;
+        break;
+      }
+
+      case 7 :
+
+      if(matrix[2][0] == 'X' || matrix[2][0] == 'O'){
+            cout<<"You cannot use this position it's already in use by "<< matrix[2][0] << endl;
+      Input();
+      break;
+    }else if(matrix[2][0] == '7'){
+        //input();
+        matrix[2][0] = player;
+        break;
+      }
+
+      case 8 :
+
+      if(matrix[2][1] == 'X' || matrix[2][1] == 'O'){
+            cout<<"You cannot use this position it's already in use by "<< matrix[2][1] << endl;
+      Input();
+      break;
+    }else if(matrix[2][1] == '8'){
+        //input();
+        matrix[2][1] = player;
+        break;
+      }
+
+      case 9 :
+
+      if(matrix[2][2] == 'X' || matrix[2][2] == 'O'){
+            cout<<"You cannot use this position it's already in use by "<< matrix[2][2] << endl;
+      Input();
+      break;
+    }else if(matrix[2][2]== '9'){
+        //input();
+        matrix[2][2] = player;
+        break;
+      }
+
+      default :
+      cout<< "This number its to big or too little" << endl;
+    }
+
+
+
+}
+char Win(){
+      // First player
+      if (matrix[0][0] == 'X' && matrix[0][1]=='X' && matrix[0][2] == 'X' )
+          return 'X';
+      if (matrix[1][0] == 'X' && matrix[1][1]=='X' && matrix[1][2] == 'X' )
+          return 'X';
+      if (matrix[2][0] == 'X' && matrix[2][1]=='X' && matrix[2][2] == 'X' )
+          return 'X';
+
+      if (matrix[0][0] == 'X' && matrix[1][0]=='X' && matrix[2][0] == 'X' )
+          return 'X';
+
+      if (matrix[0][1] == 'X' && matrix[1][1]=='X' && matrix[2][1] == 'X' )
+          return 'X';
+
+      if (matrix[0][2] == 'X' && matrix[1][2]=='X' && matrix[2][2] == 'X' )
+          return 'X';
+
+      if (matrix[0][0] == 'X' && matrix[1][1]=='X' && matrix[2][2] == 'X' )
+          return 'X';
+
+      if (matrix[0][2] == 'X' && matrix[1][1]=='X' && matrix[2][0] == 'X' )
+          return 'X';
+
+      // Second player
+      if (matrix[0][0] == 'O' && matrix[0][1]=='O' && matrix[0][2] == 'O' )
+          return 'O';
+      if (matrix[1][0] == 'O' && matrix[1][1]=='O' && matrix[1][2] == 'O' )
+          return 'O';
+      if (matrix[2][0] == 'O' && matrix[2][1]=='O' && matrix[2][2] == 'O' )
+          return 'O';
+
+      if (matrix[0][0] == 'O' && matrix[1][0]=='O' && matrix[2][0] == 'O' )
+          return 'O';
+
+      if (matrix[0][1] == 'O' && matrix[1][1]=='O' && matrix[2][1] == 'O' )
+          return 'O';
+
+      if (matrix[0][2] == 'O' && matrix[1][2]=='O' && matrix[2][2] == 'O' )
+          return 'O';
+
+      if (matrix[0][0] == 'O' && matrix[1][1]=='O' && matrix[2][2] == 'O' )
+          return 'O';
+
+      if (matrix[0][2] == 'O' && matrix[1][1]=='O' && matrix[2][0] == 'O' )
+        return 'O';
+
+
+      return '/';
+}
+void TogglePlayer(){
+
+  if(player=='X')
+    player ='O';
+
+  else
+    player ='X';
 }
 
-//Give initial values to the board matrix
-void init()
-{
-	for(int i = 0 ; i < 3 ; i++)
-	{
-		for(int j = 0 ; j < 3 ; j++)
-		{
-			board[i][j] = '_';
-		}
-	}
-}
-
-void clearScreen()
-{
-	#ifdef _WIN32
-	system("cls");
-	#else
-	system("clear");
-	#endif
-}
-
-bool validate(int number)
-{
-	if(number >= 1 && number <= 3)
-	{
-		return true;
-	}else
-	{
-		cout << "Please pick a value between 1 and 3" << endl;
-		return  false;
-	}
-}
-
-bool gameover()
-{
-	//TODO: Implement this method,verify if any player has won the match of it's being a tie.
-	//Return true if the game is over. Print message informing the user about what just happened.
-	if(false){ // change this with a real condition
-		cout << "You loose" << endl;
-	}
-	return false;
-}
-
-bool isValidInput(istream& in){
-	if(in.fail())
-	{
-		cout <<"Only numbers are accepted" << endl;
-	    in.clear();
-	    in.ignore(numeric_limits<streamsize>::max(), '\n'); //skip bad input
-	    return false;
-	}else
-	{
-		return true;
-	}
-}
-
-void showBoard()
-{
-	while(!gameover())
-	{
-		clearScreen();
-		int row = 0;
-		int column = 0;
-
-		cout << "It's " << player << "'s turn" << endl;
-		//printing column numbers
-		cout << "\t";
-		for(int i = 0 ; i < 3 ; i++)
-		{
-			cout << i + 1 << "\t";
-		}
-		cout << endl;
-
-		for(int i = 0 ; i < 3 ; i++)
-		{
-			cout << i + 1 << "\t";
-			for(int j = 0 ; j < 3 ; j++)
-			{
-				cout << board[i][j] << "\t";
-			}
-			cout << endl;
-		}
-		do
-		{
-			cout << "In what row would you like to play? =>";
-			cin >> row;
-		}while(!isValidInput(cin) && !validate(row));
-		do
-		{
-			cout << "In what column would you like to play? => ";
-			cin >> column;
-		}while(!isValidInput(cin) && !validate(column));
-
-		if(isAvailable(row,column))
-		{
-			board[row - 1][column - 1] = player;
-			player = player == 'X' ? 'O' : 'X';
-		}else
-		{
-			cout << "The cell " << row << " , " << column << " is not available" << endl;
-		}
-	}
-}
